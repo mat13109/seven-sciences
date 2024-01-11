@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7ctvj108smq5"]
+
+[ext_resource type="Script" path="res://Scripts/Main.cs" id="1_idm75"]
+[ext_resource type="PackedScene" uid="uid://ct6sdfbj280xy" path="res://Prefabs/ScienceCalculatorContainerPrefab.tscn" id="2_2frtk"]
+[ext_resource type="Texture2D" uid="uid://w63qyw7vwsmt" path="res://Art/sciencecompass.png" id="3_ceco3"]
+[ext_resource type="Texture2D" uid="uid://bdlu5bki8kjsy" path="res://Art/sciencetablet.png" id="4_wokvn"]
+[ext_resource type="Texture2D" uid="uid://bfhwlt5lg3dc4" path="res://Art/sciencecogwheel.png" id="5_p4nm1"]
+[ext_resource type="Texture2D" uid="uid://cmuvjxddk4gdi" path="res://Art/sciencewild.png" id="6_7h6n2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eflld"]
+font_size = 150
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idm75")
+
+[node name="CalculatorUI" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ScienceContainer" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
+layout_mode = 2
+_texture = ExtResource("3_ceco3")
+
+[node name="ScienceContainer2" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
+layout_mode = 2
+_texture = ExtResource("4_wokvn")
+_scienceSymbol = 1
+
+[node name="ScienceContainer3" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
+layout_mode = 2
+_texture = ExtResource("5_p4nm1")
+_scienceSymbol = 2
+
+[node name="ScienceContainer4" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
+layout_mode = 2
+_texture = ExtResource("6_7h6n2")
+_scienceSymbol = 3
+_isLimited = true
+_max = 5
+
+[node name="Label" type="Label" parent="CalculatorUI"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "69"
+label_settings = SubResource("LabelSettings_eflld")
+horizontal_alignment = 1
+vertical_alignment = 1

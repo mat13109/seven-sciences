@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://df1vap5vo6jc4"]
+
+[ext_resource type="Script" path="res://Scripts/UI/CalculatorButton.cs" id="1_cl2bd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_74jbd"]
+font_size = 150
+
+[node name="CalculatorButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_cl2bd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "±"
+label_settings = SubResource("LabelSettings_74jbd")
+horizontal_alignment = 1
+vertical_alignment = 1

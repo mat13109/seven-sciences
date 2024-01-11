@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct6sdfbj280xy"]
+
+[ext_resource type="PackedScene" uid="uid://df1vap5vo6jc4" path="res://Prefabs/CalculatorButtonPrefab.tscn" id="1_cixkh"]
+[ext_resource type="Script" path="res://Scripts/UI/ScienceContainer.cs" id="1_kvteq"]
+[ext_resource type="Texture2D" uid="uid://w63qyw7vwsmt" path="res://Art/sciencecompass.png" id="2_t71h8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvdoe"]
+font_size = 150
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ScienceContainer" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_kvteq")
+
+[node name="MinusButton" parent="." instance=ExtResource("1_cixkh")]
+layout_mode = 2
+_defaultText = "-"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_t71h8")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "69"
+label_settings = SubResource("LabelSettings_cvdoe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlusButton" parent="." instance=ExtResource("1_cixkh")]
+layout_mode = 2
+_defaultText = "+"
