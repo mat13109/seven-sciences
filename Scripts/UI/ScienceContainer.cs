@@ -57,12 +57,7 @@ public partial class ScienceContainer : HBoxContainer
         _plusButton.Pressed -= Plus;
     }
 
-    public void Reset()
-    {
-        _scienceCount = 0;
-    }
-
-    public void Plus()
+    private void Plus()
     {
         // If the count is limited and the count is already at the max, return
         if (_isLimited && ScienceCount >= _max)

@@ -55,14 +55,6 @@ public partial class Main : Node
 		}
 	}
 
-	public void Reset()
-	{
-		foreach (ScienceContainer scienceContainer in _scienceCalculatorContainers)
-		{
-			scienceContainer.Reset();
-		}
-	}
-
 	#endregion
 
 	#region Private methods
