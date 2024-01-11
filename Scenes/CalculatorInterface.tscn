@@ -47,7 +47,8 @@ _scienceSymbol = 2
 layout_mode = 2
 _texture = ExtResource("6_7h6n2")
 _scienceSymbol = 3
-_max = 5
+_isLimited = true
+_max = 10
 
 [node name="Label" type="Label" parent="CalculatorUI"]
 layout_mode = 2

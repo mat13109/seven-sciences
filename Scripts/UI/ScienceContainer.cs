@@ -28,7 +28,7 @@ public partial class ScienceContainer : HBoxContainer
     [Export] private Texture2D _texture;
     [Export] private EScienceSymbol _scienceSymbol;
     [Export] private bool _isLimited;
-    [Export(PropertyHint.Range, "0,5,")] private int _max;
+    [Export] private int _max;
 
     private TextureRect _textureRect;
     private Button _minusButton;

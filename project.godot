@@ -15,7 +15,7 @@ config/version="1.0"
 run/main_scene="res://Scenes/CalculatorInterface.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 boot_splash/show_image=false
-config/icon="res://Art/icon.svg"
+config/icon="res://Art/sciencecompass.png"
 
 [display]
 
