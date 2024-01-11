@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7ctvj108smq5"]
+[gd_scene load_steps=9 format=3 uid="uid://b7ctvj108smq5"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_idm75"]
 [ext_resource type="PackedScene" uid="uid://ct6sdfbj280xy" path="res://Prefabs/ScienceCalculatorContainerPrefab.tscn" id="2_2frtk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bdlu5bki8kjsy" path="res://Art/sciencetablet.png" id="4_wokvn"]
 [ext_resource type="Texture2D" uid="uid://bfhwlt5lg3dc4" path="res://Art/sciencecogwheel.png" id="5_p4nm1"]
 [ext_resource type="Texture2D" uid="uid://cmuvjxddk4gdi" path="res://Art/sciencewild.png" id="6_7h6n2"]
+[ext_resource type="Script" path="res://Scripts/PerformanceTester.cs" id="7_k8lxl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eflld"]
 font_size = 150
@@ -55,3 +56,8 @@ text = "69"
 label_settings = SubResource("LabelSettings_eflld")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PerformanceTester" type="Node" parent="."]
+script = ExtResource("7_k8lxl")
+_iterationCount = 10
+_wildCount = 10

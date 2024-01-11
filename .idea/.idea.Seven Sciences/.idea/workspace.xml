@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23853d0c-b7d3-4ef4-9cad-2a592fa14327" name="Changes" comment="Add .editorconfig file and update project settings&#10;&#10;This commit adds a detailed .editorconfig file to enforce coding style guides across different text editors and IDEs. Additionally, project-level configuration files under &quot;.idea&quot; directory have been updated which includes new settings for code style and version control system. The previously ignored files are removed from .gitignore file.">
-      <change beforePath="$PROJECT_DIR$/Scripts/Maths.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Maths.cs" afterDir="false" />
+    <list default="true" id="23853d0c-b7d3-4ef4-9cad-2a592fa14327" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Seven Sciences/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Seven Sciences/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/CalculatorInterface.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/CalculatorInterface.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Main.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/UI/ScienceContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/UI/ScienceContainer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +22,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2aohpAQPZyTTF3ejKZwrnNrjni3" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,6 +32,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Executable.Player.executor": "Debug",
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -51,6 +55,34 @@
     ]
   }
 }]]></component>
+  <component name="RunManager" selected=".NET Executable.Player">
+    <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Programs/Godot/Godot_v4.2.1-stable_mono_win64.exe" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;D:\Sources\SevenSciences&quot; --editor" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Player" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Programs/Godot/Godot_v4.2.1-stable_mono_win64.exe" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;D:\Sources\SevenSciences&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,6 +92,8 @@
       <option name="presentableId" value="Default" />
       <updated>1704991020603</updated>
       <workItem from="1704991021188" duration="594000" />
+      <workItem from="1705005045217" duration="20000" />
+      <workItem from="1705005077115" duration="2534000" />
     </task>
     <task id="LOCAL-00001" summary="Add .editorconfig file and update project settings&#10;&#10;This commit adds a detailed .editorconfig file to enforce coding style guides across different text editors and IDEs. Additionally, project-level configuration files under &quot;.idea&quot; directory have been updated which includes new settings for code style and version control system. The previously ignored files are removed from .gitignore file.">
       <option name="closed" value="true" />

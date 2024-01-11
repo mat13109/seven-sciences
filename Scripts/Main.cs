@@ -10,7 +10,7 @@ public partial class Main : Node
 	#region Members
 
 	private readonly List<ScienceContainer> _scienceCalculatorContainers = new();
-	
+
 	/// <summary>
 	/// The science cards in the containers to calculate the score with wild cards in the recursive function
 	/// <see cref="Maths.CalculateScienceScore"/>
@@ -18,15 +18,15 @@ public partial class Main : Node
 	private readonly System.Collections.Generic.Dictionary<EScienceSymbol, int> _scienceCardsInContainersTemp = new();
 
 	private Label _totalScoreText;
-	
+
 	#endregion
 
 	#region Accessors
 
 	public static Action OnCardCountChanged { get; private set; }
-	
+
 	#endregion
-	
+
 	#region Public methods
 
 	public override void _Ready()
@@ -36,7 +36,7 @@ public partial class Main : Node
 
 		FindContainers();
 	}
-	
+
 	public override void _EnterTree()
 	{
 		OnCardCountChanged += CardCountChanged;
@@ -54,7 +54,15 @@ public partial class Main : Node
 			GetTree().Quit();
 		}
 	}
-	
+
+	public void Reset()
+	{
+		foreach (ScienceContainer scienceContainer in _scienceCalculatorContainers)
+		{
+			scienceContainer.Reset();
+		}
+	}
+
 	#endregion
 
 	#region Private methods

@@ -24,12 +24,12 @@ public partial class ScienceContainer : HBoxContainer
     }
 
     public EScienceSymbol ScienceSymbol => _scienceSymbol;
-    
+
     [Export] private Texture2D _texture;
     [Export] private EScienceSymbol _scienceSymbol;
     [Export] private bool _isLimited;
     [Export(PropertyHint.Range, "0,5,")] private int _max;
-    
+
     private TextureRect _textureRect;
     private Button _minusButton;
     private Button _plusButton;
@@ -46,7 +46,7 @@ public partial class ScienceContainer : HBoxContainer
 
         _minusButton = GetNode<Button>("MinusButton");
         _plusButton = GetNode<Button>("PlusButton");
-        
+
         _minusButton.Pressed += Minus;
         _plusButton.Pressed += Plus;
     }
@@ -57,16 +57,12 @@ public partial class ScienceContainer : HBoxContainer
         _plusButton.Pressed -= Plus;
     }
 
-    private void Minus()
+    public void Reset()
     {
-        // If the count is already at 0, return
-        if (ScienceCount > 0)
-        {
-            ScienceCount--;
-        }
+        _scienceCount = 0;
     }
 
-    private void Plus()
+    public void Plus()
     {
         // If the count is limited and the count is already at the max, return
         if (_isLimited && ScienceCount >= _max)
@@ -75,5 +71,14 @@ public partial class ScienceContainer : HBoxContainer
         }
 
         ScienceCount++;
+    }
+
+    private void Minus()
+    {
+        // If the count is already at 0, return
+        if (ScienceCount > 0)
+        {
+            ScienceCount--;
+        }
     }
 }
