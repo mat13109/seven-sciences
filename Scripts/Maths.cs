@@ -11,8 +11,8 @@ public static class Maths
     /// The results of the recursive function
     /// <see cref="CalculateScienceScore"/>
     /// </summary>
-    private static readonly List<int> s_resultsTemp = new();
-    
+    private static int s_resultsTemp;
+
     /// <summary>
     /// The science symbol scores in the recursive function
     /// <see cref="CalculateScienceScore"/>
@@ -71,17 +71,22 @@ public static class Maths
             Dictionary<EScienceSymbol, int> supposedScienceCardsTemp = new(scienceSymbolScores);
             supposedScienceCardsTemp[(EScienceSymbol)x]++;
 
-            s_resultsTemp.Add(CalculateScienceScoreNoWild(supposedScienceCardsTemp));
+            int temp = CalculateScienceScoreNoWild(supposedScienceCardsTemp);
+            if (temp > s_resultsTemp)
+            {
+                s_resultsTemp = temp;
+            }
+
             CalculateScienceScore(supposedScienceCardsTemp, wildCount - 1);
         }
 
         // Return the highest score from the results list
-        return s_resultsTemp.Max();
+        return s_resultsTemp;
     }
 
     public static void Reset()
     {
-        s_resultsTemp.Clear();
+        s_resultsTemp = 0;
     }
 
     #endregion
