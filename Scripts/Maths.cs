@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SevenScience;
 
 public static class Maths
 {
+    #region Members
+
     /// <summary>
     /// The results of the recursive function
     /// <see cref="CalculateScienceScore"/>
@@ -16,6 +20,10 @@ public static class Maths
     /// <see cref="CalculateScienceScore"/>
     /// </summary>
     private static readonly Dictionary<EScienceSymbol, int> s_scienceSymbolScoresTemp = new();
+
+    #endregion
+
+    #region Public Methods
 
     /// <summary>
     /// Calculate the score without wild cards
@@ -35,7 +43,7 @@ public static class Maths
         int result = s_scienceSymbolScoresTemp.Sum(item => item.Value);
 
         // Group bonus: 7 per symbol group
-        int[] cardsCount = new int[3]
+        int[] cardsCount = new int[]
         {
             scienceCards[EScienceSymbol.Compass],
             scienceCards[EScienceSymbol.Tablet],
@@ -77,4 +85,6 @@ public static class Maths
     {
         s_resultsTemp.Clear();
     }
+
+    #endregion
 }

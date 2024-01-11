@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 using Godot.Collections;
 
@@ -8,8 +7,8 @@ namespace SevenScience;
 
 public partial class Main : Node
 {
-	public static Action OnCardCountChanged;
-	
+	#region Members
+
 	private readonly List<ScienceContainer> _scienceCalculatorContainers = new();
 	
 	/// <summary>
@@ -19,16 +18,48 @@ public partial class Main : Node
 	private readonly System.Collections.Generic.Dictionary<EScienceSymbol, int> _scienceCardsInContainersTemp = new();
 
 	private Label _totalScoreText;
+	
+	#endregion
+
+	#region Accessors
+
+	public static Action OnCardCountChanged { get; private set; }
+	
+	#endregion
+	
+	#region Public methods
 
 	public override void _Ready()
 	{
 		_totalScoreText = GetNode<Label>("CalculatorUI/Label");
 		_totalScoreText.Text = "0";
 
-		FindComponents();
+		FindContainers();
+	}
+	
+	public override void _EnterTree()
+	{
+		OnCardCountChanged += CardCountChanged;
 	}
 
-	private void FindComponents()
+	public override void _ExitTree()
+	{
+		OnCardCountChanged -= CardCountChanged;
+	}
+
+	public override void _Process(double delta)
+	{
+		if (Input.IsActionJustPressed("ui_cancel"))
+		{
+			GetTree().Quit();
+		}
+	}
+	
+	#endregion
+
+	#region Private methods
+
+	private void FindContainers()
 	{
 		Array<Node> children = GetChild(0).GetChildren();
 
@@ -39,16 +70,6 @@ public partial class Main : Node
 				_scienceCalculatorContainers.Add(container);
 			}
 		}
-	}
-
-	public override void _EnterTree()
-	{
-		OnCardCountChanged += CardCountChanged;
-	}
-
-	public override void _ExitTree()
-	{
-		OnCardCountChanged -= CardCountChanged;
 	}
 
 	private void CardCountChanged()
@@ -79,11 +100,5 @@ public partial class Main : Node
 		_totalScoreText.Text = result.ToString();
 	}
 
-	public override void _Process(double delta)
-	{
-		if (Input.IsActionJustPressed("ui_cancel"))
-		{
-			GetTree().Quit();
-		}
-	}
+	#endregion
 }
