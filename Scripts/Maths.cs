@@ -41,8 +41,7 @@ public static class Maths
         int result = s_scienceSymbolScoresTemp.Sum(item => item.Value);
 
         // Group bonus: 7 per symbol group
-        int[] cardsCount = new int[]
-        {
+        int[] cardsCount = {
             scienceCards[EScienceSymbol.Compass],
             scienceCards[EScienceSymbol.Tablet],
             scienceCards[EScienceSymbol.Cogwheel],
