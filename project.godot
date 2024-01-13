@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Seven Sciences"
+config/name="7 Wonders Science Calculator"
 config/version="1.0"
 run/main_scene="res://Scenes/CalculatorInterface.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
@@ -23,6 +23,7 @@ window/size/viewport_width=1000
 window/size/viewport_height=1000
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/handheld/orientation=6
 
 [dotnet]
 
@@ -31,3 +32,4 @@ project/assembly_name="Seven Sciences"
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
