@@ -19,6 +19,18 @@ public static class Maths
     /// </summary>
     private static readonly Dictionary<EScienceSymbol, int> s_scienceSymbolScoresTemp = new();
 
+    private static int s_groupValue = 7;
+
+    /// <summary>
+    /// The value of a group of three different science symbol
+    /// <see cref="CalculateScienceScore"/>
+    /// </summary>
+    public static int GroupValue
+    {
+        get => s_groupValue;
+        set => s_groupValue = value;
+    }
+
     #endregion
 
     #region Public Methods
@@ -40,13 +52,13 @@ public static class Maths
 
         int result = s_scienceSymbolScoresTemp.Sum(item => item.Value);
 
-        // Group bonus: 7 per symbol group
+        // Group bonus: X per symbol group
         int[] cardsCount = {
             scienceCards[EScienceSymbol.Compass],
             scienceCards[EScienceSymbol.Tablet],
             scienceCards[EScienceSymbol.Cogwheel],
         };
-        result += 7 * cardsCount.Min();
+        result += GroupValue * cardsCount.Min();
 
         return result;
     }

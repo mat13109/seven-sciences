@@ -9,7 +9,7 @@ public partial class Main : Node
 {
 	#region Members
 
-	private readonly List<ScienceContainer> _scienceCalculatorContainers = new();
+	public readonly List<ScienceContainer> _scienceCalculatorContainers = new();
 
 	/// <summary>
 	/// The science cards in the containers to calculate the score with wild cards in the recursive function

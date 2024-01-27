@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7ctvj108smq5"]
+[gd_scene load_steps=13 format=3 uid="uid://b7ctvj108smq5"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_idm75"]
 [ext_resource type="PackedScene" uid="uid://ct6sdfbj280xy" path="res://Prefabs/ScienceCalculatorContainerPrefab.tscn" id="2_2frtk"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bfhwlt5lg3dc4" path="res://Art/sciencecogwheel.png" id="5_p4nm1"]
 [ext_resource type="Texture2D" uid="uid://cmuvjxddk4gdi" path="res://Art/sciencewild.png" id="6_7h6n2"]
 [ext_resource type="Script" path="res://Scripts/Performances/PerformanceTester.cs" id="7_k8lxl"]
+[ext_resource type="Script" path="res://Scripts/Calculus/ResetScore.cs" id="7_tfi6g"]
+[ext_resource type="Texture2D" uid="uid://c1tc5ob5i3pao" path="res://Art/leaderslots.png" id="8_nqevq"]
+[ext_resource type="Script" path="res://Scripts/Calculus/UpgradeGroup.cs" id="9_vbkti"]
+
+[sub_resource type="Theme" id="Theme_ehe00"]
+default_font_size = 60
 
 [sub_resource type="LabelSettings" id="LabelSettings_eflld"]
 font_size = 150
@@ -50,9 +56,30 @@ _scienceSymbol = 3
 _isLimited = true
 _max = 10
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CalculatorUI"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="CalculatorUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_ehe00")
+text = "Reset"
+script = ExtResource("7_tfi6g")
+
+[node name="UpgradeLotsButton" type="CheckButton" parent="CalculatorUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("8_nqevq")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("9_vbkti")
+
 [node name="Label" type="Label" parent="CalculatorUI"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "69"
 label_settings = SubResource("LabelSettings_eflld")
 horizontal_alignment = 1
@@ -62,3 +89,5 @@ vertical_alignment = 1
 script = ExtResource("7_k8lxl")
 _iterationCount = 10
 _wildCount = 10
+
+[connection signal="toggled" from="CalculatorUI/HBoxContainer/UpgradeLotsButton" to="CalculatorUI/HBoxContainer/UpgradeLotsButton" method="_on_toggled"]
