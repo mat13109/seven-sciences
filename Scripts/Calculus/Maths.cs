@@ -19,17 +19,11 @@ public static class Maths
     /// </summary>
     private static readonly Dictionary<EScienceSymbol, int> s_scienceSymbolScoresTemp = new();
 
-    private static int s_groupValue = 7;
-
     /// <summary>
     /// The value of a group of three different science symbol
     /// <see cref="CalculateScienceScore"/>
     /// </summary>
-    public static int GroupValue
-    {
-        get => s_groupValue;
-        set => s_groupValue = value;
-    }
+    public static int GroupValue { get; set; } = 7;
 
     #endregion
 
@@ -95,10 +89,7 @@ public static class Maths
         return s_resultsTemp;
     }
 
-    public static void Reset()
-    {
-        s_resultsTemp = 0;
-    }
+    public static void Reset() => s_resultsTemp = 0;
 
     #endregion
 }

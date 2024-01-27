@@ -9,7 +9,7 @@ public partial class Main : Node
 {
 	#region Members
 
-	public readonly List<ScienceContainer> _scienceCalculatorContainers = new();
+	public readonly List<ScienceContainer> ScienceCalculatorContainers = new();
 
 	/// <summary>
 	/// The science cards in the containers to calculate the score with wild cards in the recursive function
@@ -37,17 +37,11 @@ public partial class Main : Node
 		FindContainers();
 	}
 
-	public override void _EnterTree()
-	{
-		OnCardCountChanged += CardCountChanged;
-	}
+	public override void _EnterTree() => OnCardCountChanged += CardCountChanged;
 
-	public override void _ExitTree()
-	{
-		OnCardCountChanged -= CardCountChanged;
-	}
+    public override void _ExitTree() => OnCardCountChanged -= CardCountChanged;
 
-	public override void _Process(double delta)
+    public override void _Process(double delta)
 	{
 		if (Input.IsActionJustPressed("ui_cancel"))
 		{
@@ -67,7 +61,7 @@ public partial class Main : Node
 		{
 			if (node is ScienceContainer container)
 			{
-				_scienceCalculatorContainers.Add(container);
+				ScienceCalculatorContainers.Add(container);
 			}
 		}
 	}
@@ -77,7 +71,7 @@ public partial class Main : Node
 		_scienceCardsInContainersTemp.Clear();
 
 		// Get the science cards in the containers
-		foreach (ScienceContainer item in _scienceCalculatorContainers)
+		foreach (ScienceContainer item in ScienceCalculatorContainers)
 		{
 			_scienceCardsInContainersTemp[item.ScienceSymbol] = item.ScienceCount;
 		}
