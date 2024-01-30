@@ -31,7 +31,7 @@ public partial class Main : Node
 
 	public override void _Ready()
 	{
-		_totalScoreText = GetNode<Label>("CalculatorUI/Label");
+		_totalScoreText = GetNode<Label>("CalculatorUI/BottomContainer/Label");
 		_totalScoreText.Text = "0";
 
 		FindContainers();
