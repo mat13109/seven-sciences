@@ -5,3 +5,6 @@ A simple, ugly, yet efficient 7 Wonders scientific victory points calculator. St
 Made using Godot 4.2 .NET  
 - https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/index.html#doc-c-sharp-platforms
 - https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html
+
+## Ref
+Nintendo switch icons created by Plastic Donut - Flaticon
