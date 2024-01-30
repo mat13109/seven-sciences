@@ -71,7 +71,16 @@ size_flags_horizontal = 3
 theme = SubResource("Theme_ehe00")
 text = "Reset"
 script = ExtResource("7_tfi6g")
-_upgradeGroupButton = NodePath("../HBoxContainer/HBoxContainer/UpgradeLotsButton")
+_upgradeGroupButton = NodePath("../HBoxContainer/UpgradeLotsButton")
+
+[node name="Label" type="Label" parent="CalculatorUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "69"
+label_settings = SubResource("LabelSettings_eflld")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CalculatorUI/HBoxContainer"]
 layout_mode = 2
@@ -84,28 +93,16 @@ size_flags_horizontal = 3
 texture = ExtResource("8_nqevq")
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CalculatorUI/HBoxContainer/HBoxContainer"]
+[node name="UpgradeLotsButton" type="CheckButton" parent="CalculatorUI/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
-
-[node name="UpgradeLotsButton" type="CheckButton" parent="CalculatorUI/HBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
 theme_override_icons/checked = ExtResource("9_tfa45")
 theme_override_icons/unchecked = ExtResource("10_14uum")
 script = ExtResource("9_vbkti")
-
-[node name="Label" type="Label" parent="CalculatorUI"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "69"
-label_settings = SubResource("LabelSettings_eflld")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PerformanceTester" type="Node" parent="."]
 script = ExtResource("7_k8lxl")
 _iterationCount = 10
 _wildCount = 10
 
-[connection signal="toggled" from="CalculatorUI/HBoxContainer/HBoxContainer/HBoxContainer/UpgradeLotsButton" to="CalculatorUI/HBoxContainer/HBoxContainer/HBoxContainer/UpgradeLotsButton" method="_on_toggled"]
+[connection signal="toggled" from="CalculatorUI/HBoxContainer/HBoxContainer/UpgradeLotsButton" to="CalculatorUI/HBoxContainer/HBoxContainer/UpgradeLotsButton" method="_on_toggled"]

@@ -4,7 +4,10 @@ namespace SevenScience;
 
 public partial class UpgradeGroup : CheckButton
 {
-	private CheckButton _upgradeGroupButton;
+    private const int BaseGroupValue = 7;
+    private const int UpgradedGroupValue = 10;
+
+    private CheckButton _upgradeGroupButton;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() => _upgradeGroupButton = GetNode<CheckButton>(".");
@@ -15,7 +18,7 @@ public partial class UpgradeGroup : CheckButton
 	/// <param name="isToggle">If the group upgrade leader's card is active</param>
 	private static void _on_toggled(bool isToggle)
     {
-        Maths.GroupValue = isToggle ? 10 : 7;
+        Maths.GroupValue = isToggle ? UpgradedGroupValue : BaseGroupValue;
         Main.OnCardCountChanged?.Invoke();
     }
 }

@@ -30,6 +30,7 @@ public partial class ResetScore : Button
 		{
 			item.ScienceCount = 0;
 		}
+
 		Main.OnCardCountChanged?.Invoke();
 	}
 }
