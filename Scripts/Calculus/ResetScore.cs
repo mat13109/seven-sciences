@@ -5,12 +5,11 @@ namespace SevenScience;
 public partial class ResetScore : Button
 {
 	private Button _resetScoreButton;
-	private CheckButton _upgradeGroupButton;
+	[Export] private CheckButton _upgradeGroupButton;
 
 	public override void _Ready()
 	{
 		_resetScoreButton = GetNode<Button>(".");
-		_upgradeGroupButton = GetNode<CheckButton>("/root/Main/CalculatorUI/HBoxContainer/UpgradeLotsButton");
 
 		_resetScoreButton.Pressed += Reset;
 	}
