@@ -6,10 +6,12 @@ public partial class ResetScore : Button
 {
 	private Button _resetScoreButton;
 	[Export] private CheckButton _upgradeGroupButton;
+    private Main _main;
 
 	public override void _Ready()
 	{
 		_resetScoreButton = GetNode<Button>(".");
+        _main = GetNode<Main>("/root/Main");
 
 		_resetScoreButton.Pressed += Reset;
 	}
@@ -26,7 +28,7 @@ public partial class ResetScore : Button
 		_upgradeGroupButton.ToggleMode = false;
 		_upgradeGroupButton.ToggleMode = true;
 
-		foreach (ScienceContainer item in GetNode<Main>("/root/Main").ScienceCalculatorContainers)
+		foreach (ScienceContainer item in _main.ScienceCalculatorContainers)
 		{
 			item.ScienceCount = 0;
 		}
