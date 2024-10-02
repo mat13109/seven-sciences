@@ -42,23 +42,29 @@ alignment = 1
 [node name="ScienceContainer" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("3_ceco3")
+_isLimited = true
+_max = 420
 
 [node name="ScienceContainer2" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("4_wokvn")
 _scienceSymbol = 1
+_isLimited = true
+_max = 420
 
 [node name="ScienceContainer3" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("5_p4nm1")
 _scienceSymbol = 2
+_isLimited = true
+_max = 420
 
 [node name="ScienceContainer4" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("6_7h6n2")
 _scienceSymbol = 3
 _isLimited = true
-_max = 10
+_max = 420
 
 [node name="BottomContainer" type="HBoxContainer" parent="CalculatorUI"]
 layout_mode = 2

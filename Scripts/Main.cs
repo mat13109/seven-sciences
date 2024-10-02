@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 
@@ -78,17 +79,26 @@ public partial class Main : Node
 
 		int result;
 
-		// If there are no wild cards, calculate the score without wild cards
-		// else calculate the score with wild cards
-		if (_scienceCardsInContainersTemp[EScienceSymbol.Wild] == 0)
-		{
-			result = Maths.CalculateScienceScoreNoWild(_scienceCardsInContainersTemp);
-		}
-		else
-		{
-			Maths.Reset();
-			result = Maths.CalculateScienceScore(_scienceCardsInContainersTemp, _scienceCardsInContainersTemp[EScienceSymbol.Wild]);
-		}
+        switch (_scienceCardsInContainersTemp[EScienceSymbol.Wild])
+        {
+            // If there are no wild cards, calculate the score without wild cards
+            // else calculate the score with wild cards
+            // but if there's a lot of wilds, just add them all the highest count
+            case 0:
+                result = Maths.CalculateScienceScoreNoWild(_scienceCardsInContainersTemp);
+                break;
+            case < 5:
+                Maths.Reset();
+                result = Maths.CalculateScienceScore(_scienceCardsInContainersTemp, _scienceCardsInContainersTemp[EScienceSymbol.Wild]);
+                break;
+            default:
+                int wildCount = _scienceCardsInContainersTemp[EScienceSymbol.Wild];
+                _scienceCardsInContainersTemp.Remove(EScienceSymbol.Wild);
+                EScienceSymbol highestSymbol = _scienceCardsInContainersTemp.OrderByDescending(kvp => kvp.Value).FirstOrDefault().Key;
+                _scienceCardsInContainersTemp[highestSymbol] += wildCount;
+                result = Maths.CalculateScienceScoreNoWild(_scienceCardsInContainersTemp);
+                break;
+        }
 
 		// Set the total score text
 		_totalScoreText.Text = result.ToString();
