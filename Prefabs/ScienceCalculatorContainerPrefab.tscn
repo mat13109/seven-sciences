@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ct6sdfbj280xy"]
 
 [ext_resource type="PackedScene" uid="uid://df1vap5vo6jc4" path="res://Prefabs/CalculatorButtonPrefab.tscn" id="1_cixkh"]
-[ext_resource type="Script" path="res://Scripts/UI/ScienceContainer.cs" id="1_kvteq"]
+[ext_resource type="Script" uid="uid://duqedndq88tvk" path="res://Scripts/UI/ScienceContainer.cs" id="1_kvteq"]
 [ext_resource type="Texture2D" uid="uid://w63qyw7vwsmt" path="res://Art/sciencecompass.png" id="2_t71h8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cvdoe"]

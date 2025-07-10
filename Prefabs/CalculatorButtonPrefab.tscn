@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://df1vap5vo6jc4"]
 
-[ext_resource type="Script" path="res://Scripts/UI/CalculatorButton.cs" id="1_cl2bd"]
+[ext_resource type="Script" uid="uid://wmuygnvgr4bw" path="res://Scripts/UI/CalculatorButton.cs" id="1_cl2bd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_74jbd"]
 font_size = 150
