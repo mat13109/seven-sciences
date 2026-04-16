@@ -81,12 +81,8 @@ public partial class Main : Node
 
         switch (_scienceCardsInContainersTemp[EScienceSymbol.Wild])
         {
-            // If there are no wild cards, calculate the score without wild cards
-            // else calculate the score with wild cards
+            // Calculate the score
             // but if there's a lot of wilds, just add them all the highest count
-            case 0:
-                result = Maths.CalculateScienceScoreNoWild(_scienceCardsInContainersTemp);
-                break;
             case < 5:
                 Maths.Reset();
                 result = Maths.CalculateScienceScore(_scienceCardsInContainersTemp, _scienceCardsInContainersTemp[EScienceSymbol.Wild]);

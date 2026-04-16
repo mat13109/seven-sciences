@@ -67,7 +67,7 @@ public static class Maths
     {
         if (wildCount == 0)
         {
-            return -1;
+            return CalculateScienceScoreNoWild(scienceSymbolScores);
         }
 
         for (int x = 0; x < (int)EScienceSymbol.Count - 1; x++)
