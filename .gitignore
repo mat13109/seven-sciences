@@ -6,3 +6,6 @@
 
 # Android
 android/
+
+# Code editor
+.vscode/
