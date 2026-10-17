@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RollForward>Major</RollForward>
+    <RootNamespace>SevenScience.Tests</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <!-- The scoring code is plain C#, so it is compiled straight into the tests without the Godot SDK -->
+  <ItemGroup>
+    <Compile Include="../../Scripts/Calculus/Maths.cs" Link="Maths.cs" />
+    <Compile Include="../../Scripts/Calculus/EScienceSymbol.cs" Link="EScienceSymbol.cs" />
+  </ItemGroup>
+
+</Project>

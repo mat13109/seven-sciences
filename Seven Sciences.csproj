@@ -4,4 +4,8 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>SevenSciences</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <!-- The unit tests have their own project -->
+    <Compile Remove="Tests/**" />
+  </ItemGroup>
 </Project>

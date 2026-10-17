@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Godot;
 
 namespace SevenScience;
 
@@ -57,13 +57,13 @@ public static class Maths
         };
 
         // More symbols never lower the score, so Pidgeon always gains as many as it can
-        int picks = Mathf.Min(PidgeonCount, PidgeonAvailableCards.Sum());
+        int picks = Math.Min(PidgeonCount, PidgeonAvailableCards.Sum());
         int best = 0;
 
         // Try every way to share the picks between the three symbols
-        for (int compass = 0; compass <= Mathf.Min(picks, PidgeonAvailableCards[0]); compass++)
+        for (int compass = 0; compass <= Math.Min(picks, PidgeonAvailableCards[0]); compass++)
         {
-            for (int tablet = 0; tablet <= Mathf.Min(picks - compass, PidgeonAvailableCards[1]); tablet++)
+            for (int tablet = 0; tablet <= Math.Min(picks - compass, PidgeonAvailableCards[1]); tablet++)
             {
                 int cogwheel = picks - compass - tablet;
 
@@ -75,8 +75,8 @@ public static class Maths
                 int[] pidgeon = { compass, tablet, cogwheel };
 
                 // The end of game powers can be resolved in either order, keep the best one
-                best = Mathf.Max(best, ScoreWithGroupPlus(AddCounts(cardsCount, pidgeon), s_noSymbols));
-                best = Mathf.Max(best, ScoreWithGroupPlus(cardsCount, pidgeon));
+                best = Math.Max(best, ScoreWithGroupPlus(AddCounts(cardsCount, pidgeon), s_noSymbols));
+                best = Math.Max(best, ScoreWithGroupPlus(cardsCount, pidgeon));
             }
         }
 
@@ -154,7 +154,7 @@ public static class Maths
 
             int[] counts = AddCounts(cardsCount, gainedAfter);
             counts[i] += GroupPlusCount;
-            best = Mathf.Max(best, ScoreOf(counts));
+            best = Math.Max(best, ScoreOf(counts));
         }
 
         return best;
