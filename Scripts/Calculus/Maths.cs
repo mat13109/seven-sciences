@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Godot;
 
 namespace SevenScience;
 
@@ -14,16 +15,16 @@ public static class Maths
     private static int s_resultsTemp;
 
     /// <summary>
-    /// The science symbol scores in the recursive function
-    /// <see cref="CalculateScienceScore"/>
-    /// </summary>
-    private static readonly Dictionary<EScienceSymbol, int> s_scienceSymbolScoresTemp = new();
-
-    /// <summary>
     /// The value of a group of three different science symbol
     /// <see cref="CalculateScienceScore"/>
     /// </summary>
     public static int GroupValue { get; set; } = 7;
+
+    /// <summary>
+    /// How many times the GroupPlus power is stacked: each one adds a science symbol
+    /// of the type the player owns the most of
+    /// </summary>
+    public static int GroupPlusCount { get; set; }
 
     #endregion
 
@@ -36,25 +37,37 @@ public static class Maths
     /// <returns></returns>
     public static int CalculateScienceScoreNoWild(IReadOnlyDictionary<EScienceSymbol, int> scienceCards)
     {
-        s_scienceSymbolScoresTemp.Clear();
-
-        // Calculate the score for each science symbol
-        foreach (KeyValuePair<EScienceSymbol, int> item in scienceCards.Where(item => item.Key != EScienceSymbol.Wild))
-        {
-            s_scienceSymbolScoresTemp[item.Key] = item.Value * item.Value;
-        }
-
-        int result = s_scienceSymbolScoresTemp.Sum(item => item.Value);
-
-        // Group bonus: X per symbol group
         int[] cardsCount = {
             scienceCards[EScienceSymbol.Compass],
             scienceCards[EScienceSymbol.Tablet],
             scienceCards[EScienceSymbol.Cogwheel],
         };
-        result += GroupValue * cardsCount.Min();
 
-        return result;
+        int mostOwned = cardsCount.Max();
+
+        // Without any symbol there is no "most owned" type to add to
+        if (GroupPlusCount == 0 || mostOwned == 0)
+        {
+            return ScoreOf(cardsCount);
+        }
+
+        // The stacked symbols all go to the same type: once the first one is added, that type is the only one in the lead.
+        // On a tie the player picks the best type among the tied ones
+        int best = 0;
+
+        for (int i = 0; i < cardsCount.Length; i++)
+        {
+            if (cardsCount[i] != mostOwned)
+            {
+                continue;
+            }
+
+            cardsCount[i] += GroupPlusCount;
+            best = Mathf.Max(best, ScoreOf(cardsCount));
+            cardsCount[i] -= GroupPlusCount;
+        }
+
+        return best;
     }
 
     /// <summary>
@@ -90,6 +103,16 @@ public static class Maths
     }
 
     public static void Reset() => s_resultsTemp = 0;
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Score of the given Compass, Tablet and Cogwheel counts:
+    /// the square of each count plus the value of each complete group of three different symbols
+    /// </summary>
+    private static int ScoreOf(int[] cardsCount) => cardsCount.Sum(count => count * count) + (GroupValue * cardsCount.Min());
 
     #endregion
 }

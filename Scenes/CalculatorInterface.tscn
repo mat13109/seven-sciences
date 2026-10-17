@@ -100,7 +100,7 @@ font_size = 150
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Main" type="Control" unique_id=1214130474]
+[node name="Main" type="Control" unique_id=1214130474 node_paths=PackedStringArray("_groupPlusCounter")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,6 +108,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_idm75")
+_groupPlusCounter = NodePath("PowerDrawer/Margin/Rows/Scroll/Grid/GroupPlusRow/Box/GroupPlusStackCounter")
 
 [node name="CalculatorUI" type="VBoxContainer" parent="." unique_id=1969631454]
 layout_mode = 1
@@ -151,13 +152,14 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ResetButton" type="Button" parent="CalculatorUI/BottomContainer" unique_id=1326117320 node_paths=PackedStringArray("_upgradeGroupButton")]
+[node name="ResetButton" type="Button" parent="CalculatorUI/BottomContainer" unique_id=1326117320 node_paths=PackedStringArray("_upgradeGroupButton", "_groupPlusCounter")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_ehe00")
 text = "Reset"
 script = ExtResource("7_tfi6g")
 _upgradeGroupButton = NodePath("../../../PowerDrawer/Margin/Rows/Scroll/Grid/AristoteRow/Box/AristoteCheckButton")
+_groupPlusCounter = NodePath("../../../PowerDrawer/Margin/Rows/Scroll/Grid/GroupPlusRow/Box/GroupPlusStackCounter")
 
 [node name="Label" type="Label" parent="CalculatorUI/BottomContainer" unique_id=195563827]
 layout_mode = 2

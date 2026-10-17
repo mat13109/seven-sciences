@@ -18,6 +18,9 @@ Each complete trio of {Compass, Tablet, Cogwheel} awards **7 points** (or **10**
 
 Both methods stack: identical-symbol score + trios score.
 
+## GroupPlus power
+`Maths.GroupPlusCount` (0-5, set from the GroupPlus `StackCounter` in `Main`) adds that many symbols of the type owned the most, applied after wild cards are assigned. On a tie the best tied type is used, and nothing is added when no symbol is owned. `ResetScore` clears the counter.
+
 ## Wild Card Optimization (`Maths.cs`)
 - The wild counter is capped at 3 (the game's maximum), so a recursive brute-force tries every assignment and picks the max (`CalculateScienceScore`). **Must call `Maths.Reset()` first** — static state is reused across calls.
 
@@ -66,5 +69,5 @@ Two presets in `export_presets.cfg`:
 - **Android** → `build/7WSC36.apk`, Gradle build, arm64-v8a + x86_64, target SDK 35
 
 ## Gotchas
-- `Maths.s_resultsTemp` and `s_scienceSymbolScoresTemp` are static — call `Maths.Reset()` before recursive wild-card calculation.
+- `Maths.s_resultsTemp` is static — call `Maths.Reset()` before recursive wild-card calculation.
 - `ResetScore.Reset()` toggles the upgrade group button via `ToggleMode = false; ToggleMode = true;` rather than calling `Button.Pressed`.

@@ -17,6 +17,8 @@ public partial class Main : Node
 	/// </summary>
 	private readonly System.Collections.Generic.Dictionary<EScienceSymbol, int> _scienceCardsInContainersTemp = new();
 
+	[Export] private StackCounter _groupPlusCounter;
+
 	private Label _totalScoreText;
 
 	#endregion
@@ -35,11 +37,17 @@ public partial class Main : Node
 		_totalScoreText.Text = "0";
 
 		FindContainers();
+
+		_groupPlusCounter.CountChanged += OnGroupPlusCountChanged;
 	}
 
 	public override void _EnterTree() => OnCardCountChanged += CardCountChanged;
 
-    public override void _ExitTree() => OnCardCountChanged -= CardCountChanged;
+    public override void _ExitTree()
+    {
+        OnCardCountChanged -= CardCountChanged;
+        _groupPlusCounter.CountChanged -= OnGroupPlusCountChanged;
+    }
 
     public override void _Process(double delta)
 	{
@@ -64,6 +72,12 @@ public partial class Main : Node
 				ScienceCalculatorContainers.Add(container);
 			}
 		}
+	}
+
+	private void OnGroupPlusCountChanged(int count)
+	{
+		Maths.GroupPlusCount = count;
+		CardCountChanged();
 	}
 
 	private void CardCountChanged()

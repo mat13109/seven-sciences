@@ -6,6 +6,7 @@ public partial class ResetScore : Button
 {
 	private Button _resetScoreButton;
 	[Export] private CheckButton _upgradeGroupButton;
+	[Export] private StackCounter _groupPlusCounter;
     private Main _main;
 
 	public override void _Ready()
@@ -27,6 +28,8 @@ public partial class ResetScore : Button
 		// Reset the upgrade group toggle button
 		_upgradeGroupButton.ToggleMode = false;
 		_upgradeGroupButton.ToggleMode = true;
+
+		_groupPlusCounter.Count = 0;
 
 		foreach (ScienceContainer item in _main.ScienceCalculatorContainers)
 		{
