@@ -19,8 +19,7 @@ Each complete trio of {Compass, Tablet, Cogwheel} awards **7 points** (or **10**
 Both methods stack: identical-symbol score + trios score.
 
 ## Wild Card Optimization (`Maths.cs`)
-- `< 5` wild cards: recursive brute-force tries every assignment, picks max (`CalculateScienceScore`). **Must call `Maths.Reset()` first** — static state is reused across calls.
-- `>= 5` wild cards: assigns all to the highest-count symbol (heuristic), then calculates with no-wild logic.
+- The wild counter is capped at 3 (the game's maximum), so a recursive brute-force tries every assignment and picks the max (`CalculateScienceScore`). **Must call `Maths.Reset()` first** — static state is reused across calls.
 
 ## Code Structure
 
@@ -69,4 +68,3 @@ Two presets in `export_presets.cfg`:
 ## Gotchas
 - `Maths.s_resultsTemp` and `s_scienceSymbolScoresTemp` are static — call `Maths.Reset()` before recursive wild-card calculation.
 - `ResetScore.Reset()` toggles the upgrade group button via `ToggleMode = false; ToggleMode = true;` rather than calling `Button.Pressed`.
-- Wild card heuristic (>=5) removes Wild from the dictionary before computing, mutating `_scienceCardsInContainersTemp` in-place inside `Main.CardCountChanged()`.

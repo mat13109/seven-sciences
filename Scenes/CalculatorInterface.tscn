@@ -144,7 +144,7 @@ layout_mode = 2
 _texture = ExtResource("6_7h6n2")
 _scienceSymbol = 3
 _isLimited = true
-_max = 420
+_max = 3
 
 [node name="BottomContainer" type="HBoxContainer" parent="CalculatorUI" unique_id=1436692982]
 layout_mode = 2

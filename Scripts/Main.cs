@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 using Godot.Collections;
 
@@ -77,24 +76,9 @@ public partial class Main : Node
 			_scienceCardsInContainersTemp[item.ScienceSymbol] = item.ScienceCount;
 		}
 
-		int result;
-
-        switch (_scienceCardsInContainersTemp[EScienceSymbol.Wild])
-        {
-            // Calculate the score
-            // but if there's a lot of wilds, just add them all the highest count
-            case < 5:
-                Maths.Reset();
-                result = Maths.CalculateScienceScore(_scienceCardsInContainersTemp, _scienceCardsInContainersTemp[EScienceSymbol.Wild]);
-                break;
-            default:
-                int wildCount = _scienceCardsInContainersTemp[EScienceSymbol.Wild];
-                _scienceCardsInContainersTemp.Remove(EScienceSymbol.Wild);
-                EScienceSymbol highestSymbol = _scienceCardsInContainersTemp.OrderByDescending(kvp => kvp.Value).FirstOrDefault().Key;
-                _scienceCardsInContainersTemp[highestSymbol] += wildCount;
-                result = Maths.CalculateScienceScoreNoWild(_scienceCardsInContainersTemp);
-                break;
-        }
+		// There are at most 3 wild cards, so trying every assignment stays cheap
+		Maths.Reset();
+		int result = Maths.CalculateScienceScore(_scienceCardsInContainersTemp, _scienceCardsInContainersTemp[EScienceSymbol.Wild]);
 
 		// Set the total score text
 		_totalScoreText.Text = result.ToString();
