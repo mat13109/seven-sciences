@@ -24,6 +24,12 @@ Both methods stack: identical-symbol score + trios score.
 ## Pidgeon power
 `PidgeonPower` (on the Pidgeon row) feeds `Maths.PidgeonCount` (stacks, 0-3) and `Maths.PidgeonAvailableCards` (neighbor green cards per symbol, 0-10 each). Pidgeon gains `min(stacks, total cards)` symbols, never more of a symbol than the cards available, choosing the best split. It is resolved together with wild cards, and either before or after GroupPlus (the best order is kept). `ResetScore` clears all its counters.
 
+## Aganice power
+`Maths.AganiceEnabled` (set by `AganicePower`, the Aganice toggle) lets the player replace one symbol of their city by any other; the calculator picks the best replacement, or none. It only applies to the symbols of the city (cards and wild cards), not to the ones gained by Pidgeon or GroupPlus. `ResetScore` turns the toggle off.
+
+## End of game powers (`Maths.BestScore`)
+Aganice, Pidgeon and GroupPlus are resolved by one recursive search that tries every order and every choice of each power, after the wild cards are assigned. A new power belongs in that search (and in `ReferenceScorer`).
+
 ## Wild Card Optimization (`Maths.cs`)
 - The wild counter is capped at 3 (the game's maximum), so a recursive brute-force tries every assignment and picks the max (`CalculateScienceScore`). **Must call `Maths.Reset()` first** — static state is reused across calls.
 
@@ -36,6 +42,7 @@ Scripts/
     Maths.cs           — core scoring (no-wild + recursive wild), plain C# so the tests can compile it
     EScienceSymbol.cs  — enum: Compass, Tablet, Cogwheel, Wild, Count
     UpgradeGroup.cs    — CheckButton that toggles GroupValue between 7 and 10
+    AganicePower.cs    — CheckButton that toggles Maths.AganiceEnabled
     ResetScore.cs      — resets all containers to 0; finds Main via "/root/Main"
   UI/
     ScienceContainer.cs — per-symbol counter (HBoxContainer), fires OnCardCountChanged on change
@@ -71,7 +78,7 @@ dotnet test Tests/SevenSciences.Tests
 ```
 
 - The test project compiles `Scripts/Calculus/Maths.cs` and `EScienceSymbol.cs` directly (linked files). **Keep those two files free of Godot types** (no `using Godot`, use `System.Math`), otherwise the tests stop building.
-- `ReferenceScorer` is a naive brute force (every wild assignment, every Pidgeon use, both resolution orders); `BruteForceTests` compares `Maths` against it on every small combination and on 3000 random ones. The other test classes hold hand-checked cases per power.
+- `ReferenceScorer` is a naive brute force (every wild assignment, every order of the end of game powers, every choice of each); `BruteForceTests` compares `Maths` against it on every small combination and on 3000 random ones. The other test classes hold hand-checked cases per power.
 - `Maths` keeps its settings in static properties, so tests must not run in parallel (already disabled) and derive from `MathsTestBase`, which resets them around each test.
 - Add a test with every change to scoring. New powers need their settings in `ReferenceScorer` too.
 - `Tests/` has a `.gdignore` and `Seven Sciences.csproj` excludes it, so Godot ignores the folder.

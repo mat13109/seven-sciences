@@ -49,6 +49,7 @@ public abstract class MathsTestBase : IDisposable
         Maths.GroupValue = s_defaultGroupValue;
         Maths.GroupPlusCount = 0;
         Maths.PidgeonCount = 0;
+        Maths.AganiceEnabled = false;
         Array.Clear(Maths.PidgeonAvailableCards);
     }
 }

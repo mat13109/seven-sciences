@@ -6,6 +6,7 @@ public partial class ResetScore : Button
 {
 	private Button _resetScoreButton;
 	[Export] private CheckButton _upgradeGroupButton;
+	[Export] private CheckButton _aganiceButton;
 	[Export] private StackCounter _groupPlusCounter;
 	[Export] private PidgeonPower _pidgeonPower;
     private Main _main;
@@ -26,9 +27,9 @@ public partial class ResetScore : Button
 	/// </summary>
 	private void Reset()
 	{
-		// Reset the upgrade group toggle button
-		_upgradeGroupButton.ToggleMode = false;
-		_upgradeGroupButton.ToggleMode = true;
+		// Reset the power toggle buttons
+		ReleaseToggle(_upgradeGroupButton);
+		ReleaseToggle(_aganiceButton);
 
 		_groupPlusCounter.Count = 0;
 		_pidgeonPower.Reset();
@@ -39,5 +40,14 @@ public partial class ResetScore : Button
 		}
 
 		Main.OnCardCountChanged?.Invoke();
+	}
+
+	/// <summary>
+	/// Puts a toggle button back to its unpressed state
+	/// </summary>
+	private static void ReleaseToggle(CheckButton button)
+	{
+		button.ToggleMode = false;
+		button.ToggleMode = true;
 	}
 }
