@@ -1,11 +1,20 @@
 # Godot 4+ specific ignores
 .godot/
 .idea/
-.vscode/
 *.DotSettings.user
 
 # Android
 android/
+# Build output
+build/
+bin/
+obj/
+*.apk
+*.aab
+*.idsig
 
-# Code editor
-.vscode/
+# Signing keys & credentials - never commit
+*.keystore
+*.jks
+export_credentials.cfg
+keystore.properties

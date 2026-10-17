@@ -1,5 +1,8 @@
 # 7 Wonders Science Calculator  
 A simple, ugly, yet efficient 7 Wonders scientific victory points calculator. Stop loosing so much time trying to find the perfect Wild card symbol with this app!  
+
+## Download
+Available on Android : https://play.google.com/store/apps/details?id=com.mox.sevensciences  
   
 ## How-to  
 Made using Godot 4 .NET  
