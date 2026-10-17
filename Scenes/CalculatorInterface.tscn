@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7ctvj108smq5"]
+[gd_scene format=3 uid="uid://b7ctvj108smq5"]
 
 [ext_resource type="Script" uid="uid://c6naaigkmbyve" path="res://Scripts/Main.cs" id="1_idm75"]
 [ext_resource type="PackedScene" uid="uid://ct6sdfbj280xy" path="res://Prefabs/ScienceCalculatorContainerPrefab.tscn" id="2_2frtk"]
@@ -21,7 +21,7 @@ font_size = 150
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=1214130474]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_idm75")
 
-[node name="CalculatorUI" type="VBoxContainer" parent="."]
+[node name="CalculatorUI" type="VBoxContainer" parent="." unique_id=1969631454]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,47 +39,47 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="ScienceContainer" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
+[node name="ScienceContainer" parent="CalculatorUI" unique_id=560864262 instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("3_ceco3")
 _isLimited = true
 _max = 420
 
-[node name="ScienceContainer2" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
+[node name="ScienceContainer2" parent="CalculatorUI" unique_id=1376097831 instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("4_wokvn")
 _scienceSymbol = 1
 _isLimited = true
 _max = 420
 
-[node name="ScienceContainer3" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
+[node name="ScienceContainer3" parent="CalculatorUI" unique_id=1857474702 instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("5_p4nm1")
 _scienceSymbol = 2
 _isLimited = true
 _max = 420
 
-[node name="ScienceContainer4" parent="CalculatorUI" instance=ExtResource("2_2frtk")]
+[node name="ScienceContainer4" parent="CalculatorUI" unique_id=1151396984 instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("6_7h6n2")
 _scienceSymbol = 3
 _isLimited = true
 _max = 420
 
-[node name="BottomContainer" type="HBoxContainer" parent="CalculatorUI"]
+[node name="BottomContainer" type="HBoxContainer" parent="CalculatorUI" unique_id=1436692982]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ResetButton" type="Button" parent="CalculatorUI/BottomContainer" node_paths=PackedStringArray("_upgradeGroupButton")]
+[node name="ResetButton" type="Button" parent="CalculatorUI/BottomContainer" unique_id=1326117320 node_paths=PackedStringArray("_upgradeGroupButton")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_ehe00")
 text = "Reset"
 script = ExtResource("7_tfi6g")
-_upgradeGroupButton = NodePath("../HBoxContainer/UpgradeGroupsButton")
+_upgradeGroupButton = NodePath("../AristoteHBoxContainer/AristoteCheckButton")
 
-[node name="Label" type="Label" parent="CalculatorUI/BottomContainer"]
+[node name="Label" type="Label" parent="CalculatorUI/BottomContainer" unique_id=195563827]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -88,27 +88,27 @@ label_settings = SubResource("LabelSettings_eflld")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CalculatorUI/BottomContainer"]
+[node name="AristoteHBoxContainer" type="HBoxContainer" parent="CalculatorUI/BottomContainer" unique_id=1809065754]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CalculatorUI/BottomContainer/HBoxContainer"]
+[node name="AristoteTexture" type="TextureRect" parent="CalculatorUI/BottomContainer/AristoteHBoxContainer" unique_id=1222834013]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_nqevq")
 stretch_mode = 5
 
-[node name="UpgradeGroupsButton" type="CheckButton" parent="CalculatorUI/BottomContainer/HBoxContainer"]
+[node name="AristoteCheckButton" type="CheckButton" parent="CalculatorUI/BottomContainer/AristoteHBoxContainer" unique_id=1558248130]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/checked = ExtResource("9_tfa45")
 theme_override_icons/unchecked = ExtResource("10_14uum")
 script = ExtResource("9_vbkti")
 
-[node name="PerformanceTester" type="Node" parent="."]
+[node name="PerformanceTester" type="Node" parent="." unique_id=2125742772]
 script = ExtResource("7_k8lxl")
 _iterationCount = 10
 _wildCount = 10
 
-[connection signal="toggled" from="CalculatorUI/BottomContainer/HBoxContainer/UpgradeGroupsButton" to="CalculatorUI/BottomContainer/HBoxContainer/UpgradeGroupsButton" method="_on_toggled"]
+[connection signal="toggled" from="CalculatorUI/BottomContainer/AristoteHBoxContainer/AristoteCheckButton" to="CalculatorUI/BottomContainer/AristoteHBoxContainer/AristoteCheckButton" method="_on_toggled"]
