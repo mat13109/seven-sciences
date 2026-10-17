@@ -4,9 +4,9 @@ using Godot;
 namespace SevenScience;
 
 /// <summary>
-/// Minus / count / plus stepper for a power that can be stacked up to <see cref="_max"/> times
+/// Minus / count / plus stepper capped at <see cref="_max"/>, laid out by its scene (horizontal or vertical)
 /// </summary>
-public partial class StackCounter : HBoxContainer
+public partial class StackCounter : BoxContainer
 {
 	/// <summary>
 	/// How many times the power is currently stacked, 0 means the power is off

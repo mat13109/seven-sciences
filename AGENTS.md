@@ -21,6 +21,9 @@ Both methods stack: identical-symbol score + trios score.
 ## GroupPlus power
 `Maths.GroupPlusCount` (0-5, set from the GroupPlus `StackCounter` in `Main`) adds that many symbols of the type owned the most, applied after wild cards are assigned. On a tie the best tied type is used, and nothing is added when no symbol is owned. `ResetScore` clears the counter.
 
+## Pidgeon power
+`PidgeonPower` (on the Pidgeon row) feeds `Maths.PidgeonCount` (stacks, 0-3) and `Maths.PidgeonAvailableCards` (neighbor green cards per symbol, 0-10 each). Pidgeon gains `min(stacks, total cards)` symbols, never more of a symbol than the cards available, choosing the best split. It is resolved together with wild cards, and either before or after GroupPlus (the best order is kept). `ResetScore` clears all its counters.
+
 ## Wild Card Optimization (`Maths.cs`)
 - The wild counter is capped at 3 (the game's maximum), so a recursive brute-force tries every assignment and picks the max (`CalculateScienceScore`). **Must call `Maths.Reset()` first** — static state is reused across calls.
 

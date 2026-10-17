@@ -7,6 +7,7 @@ public partial class ResetScore : Button
 	private Button _resetScoreButton;
 	[Export] private CheckButton _upgradeGroupButton;
 	[Export] private StackCounter _groupPlusCounter;
+	[Export] private PidgeonPower _pidgeonPower;
     private Main _main;
 
 	public override void _Ready()
@@ -30,6 +31,7 @@ public partial class ResetScore : Button
 		_upgradeGroupButton.ToggleMode = true;
 
 		_groupPlusCounter.Count = 0;
+		_pidgeonPower.Reset();
 
 		foreach (ScienceContainer item in _main.ScienceCalculatorContainers)
 		{
