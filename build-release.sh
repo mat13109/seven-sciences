@@ -11,5 +11,5 @@ cd "$(dirname "$0")"
 export JAVA_HOME="${JAVA_HOME:-$HOME/tools/jdk17}" ANDROID_HOME="${ANDROID_HOME:-$HOME/Android/Sdk}"
 GODOT="${GODOT:-$HOME/tools/godot-4.7.2/Godot_v4.7.2-stable_mono_linux_x86_64/Godot_v4.7.2-stable_mono_linux.x86_64}"
 mkdir -p build
-"$GODOT" --headless --path . --export-release Android build/7WSC-1.1.3.aab
+"$GODOT" --headless --path . --export-release Android build/7WSC-1.2.aab
 ls -la build/*.aab
