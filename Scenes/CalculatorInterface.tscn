@@ -124,21 +124,21 @@ alignment = 1
 layout_mode = 2
 _texture = ExtResource("3_ceco3")
 _isLimited = true
-_max = 420
+_max = 10
 
 [node name="ScienceContainer2" parent="CalculatorUI" unique_id=1376097831 instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("4_wokvn")
 _scienceSymbol = 1
 _isLimited = true
-_max = 420
+_max = 10
 
 [node name="ScienceContainer3" parent="CalculatorUI" unique_id=1857474702 instance=ExtResource("2_2frtk")]
 layout_mode = 2
 _texture = ExtResource("5_p4nm1")
 _scienceSymbol = 2
 _isLimited = true
-_max = 420
+_max = 10
 
 [node name="ScienceContainer4" parent="CalculatorUI" unique_id=1151396984 instance=ExtResource("2_2frtk")]
 layout_mode = 2
