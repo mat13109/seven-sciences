@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/StackCounter.cs" id="1_stack"]
+
+[node name="StackCounter" type="HBoxContainer" node_paths=PackedStringArray("_minusButton", "_plusButton", "_countLabel")]
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_stack")
+_minusButton = NodePath("MinusButton")
+_plusButton = NodePath("PlusButton")
+_countLabel = NodePath("CountLabel")
+
+[node name="MinusButton" type="Button" parent="."]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 2
+text = "-"
+
+[node name="CountLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlusButton" type="Button" parent="."]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 2
+text = "+"

@@ -12,9 +12,88 @@
 [ext_resource type="Texture2D" uid="uid://cf0t5r2oki3u5" path="res://Art/on-button.png" id="9_tfa45"]
 [ext_resource type="Script" uid="uid://ct8wkpowiym64" path="res://Scripts/Calculus/UpgradeGroup.cs" id="9_vbkti"]
 [ext_resource type="Texture2D" uid="uid://cpyg1c5s4mjne" path="res://Art/off-button.png" id="10_14uum"]
+[ext_resource type="Script" path="res://Scripts/UI/PowerDrawer.cs" id="11_drawr"]
+[ext_resource type="PackedScene" path="res://Prefabs/StackCounterPrefab.tscn" id="12_stack"]
 
 [sub_resource type="Theme" id="Theme_ehe00"]
 default_font_size = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drawer"]
+bg_color = Color(0.09, 0.09, 0.11, 1)
+border_width_top = 4
+border_color = Color(0.5, 0.5, 0.55, 1)
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_row"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.13, 0.13, 0.16, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.45, 0.45, 0.5, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_name"]
+content_margin_left = 24.0
+content_margin_top = 16.0
+content_margin_right = 24.0
+content_margin_bottom = 16.0
+bg_color = Color(0.2, 0.2, 0.24, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.7, 0.7, 0.75, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close"]
+bg_color = Color(0.45, 0.12, 0.14, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close_pressed"]
+bg_color = Color(0.65, 0.2, 0.22, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_circle_off"]
+bg_color = Color(0.17, 0.19, 0.21, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.7, 0.7, 0.75, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_circle_on"]
+bg_color = Color(0.04, 0.35, 0.1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.7, 0.9, 0.75, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
 
 [sub_resource type="LabelSettings" id="LabelSettings_eflld"]
 font_size = 150
@@ -35,6 +114,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -77,7 +157,7 @@ size_flags_horizontal = 3
 theme = SubResource("Theme_ehe00")
 text = "Reset"
 script = ExtResource("7_tfi6g")
-_upgradeGroupButton = NodePath("../AristoteHBoxContainer/AristoteCheckButton")
+_upgradeGroupButton = NodePath("../../PowerDrawer/Margin/Rows/Scroll/Grid/AristoteRow/Box/AristoteCheckButton")
 
 [node name="Label" type="Label" parent="CalculatorUI/BottomContainer" unique_id=195563827]
 layout_mode = 2
@@ -88,27 +168,196 @@ label_settings = SubResource("LabelSettings_eflld")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AristoteHBoxContainer" type="HBoxContainer" parent="CalculatorUI/BottomContainer" unique_id=1809065754]
+[node name="PowerDrawer" type="PanelContainer" parent="." node_paths=PackedStringArray("_closeButton", "_grabHandle", "_scroll", "_grid")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_ehe00")
+theme_override_styles/panel = SubResource("StyleBoxFlat_drawer")
+script = ExtResource("11_drawr")
+_closeButton = NodePath("Margin/Rows/Header/CloseButton")
+_grabHandle = NodePath("Margin/Rows/Header/GrabHandle")
+_scroll = NodePath("Margin/Rows/Scroll")
+_grid = NodePath("Margin/Rows/Scroll/Grid")
+
+[node name="Margin" type="MarginContainer" parent="PowerDrawer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Rows" type="VBoxContainer" parent="PowerDrawer/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Header" type="HBoxContainer" parent="PowerDrawer/Margin/Rows"]
+layout_mode = 2
+
+[node name="GrabHandle" type="CenterContainer" parent="PowerDrawer/Margin/Rows/Header"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
 
-[node name="AristoteTexture" type="TextureRect" parent="CalculatorUI/BottomContainer/AristoteHBoxContainer" unique_id=1222834013]
+[node name="GrabBar" type="ColorRect" parent="PowerDrawer/Margin/Rows/Header/GrabHandle"]
+custom_minimum_size = Vector2(160, 12)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.7, 0.7, 0.75, 1)
+
+[node name="CloseButton" type="Button" parent="PowerDrawer/Margin/Rows/Header"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_close")
+theme_override_styles/hover = SubResource("StyleBoxFlat_close")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_close_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_close")
+text = "×"
+
+[node name="Scroll" type="ScrollContainer" parent="PowerDrawer/Margin/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Grid" type="GridContainer" parent="PowerDrawer/Margin/Rows/Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("8_nqevq")
-stretch_mode = 5
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
 
-[node name="AristoteCheckButton" type="CheckButton" parent="CalculatorUI/BottomContainer/AristoteHBoxContainer" unique_id=1558248130]
+[node name="AristoteRow" type="PanelContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_row")
+
+[node name="Box" type="HBoxContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid/AristoteRow"]
+layout_mode = 2
+
+[node name="AristoteLabel" type="Label" parent="PowerDrawer/Margin/Rows/Scroll/Grid/AristoteRow/Box"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_name")
+text = "Aristote"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AristoteCheckButton" type="CheckButton" parent="PowerDrawer/Margin/Rows/Scroll/Grid/AristoteRow/Box"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/checked = ExtResource("9_tfa45")
 theme_override_icons/unchecked = ExtResource("10_14uum")
 script = ExtResource("9_vbkti")
+[node name="GroupPlusRow" type="PanelContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_row")
+
+[node name="Box" type="HBoxContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid/GroupPlusRow"]
+layout_mode = 2
+
+[node name="GroupPlusLabel" type="Label" parent="PowerDrawer/Margin/Rows/Scroll/Grid/GroupPlusRow/Box"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_name")
+text = "GroupPlus"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GroupPlusStackCounter" parent="PowerDrawer/Margin/Rows/Scroll/Grid/GroupPlusRow/Box" instance=ExtResource("12_stack")]
+layout_mode = 2
+_max = 5
+
+[node name="AganiceRow" type="PanelContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_row")
+
+[node name="Box" type="HBoxContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid/AganiceRow"]
+layout_mode = 2
+
+[node name="AganiceLabel" type="Label" parent="PowerDrawer/Margin/Rows/Scroll/Grid/AganiceRow/Box"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_name")
+text = "Aganice"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AganiceCheckButton" type="CheckButton" parent="PowerDrawer/Margin/Rows/Scroll/Grid/AganiceRow/Box"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/checked = ExtResource("9_tfa45")
+theme_override_icons/unchecked = ExtResource("10_14uum")
+
+[node name="PidgeonRow" type="PanelContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_row")
+
+[node name="Box" type="VBoxContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid/PidgeonRow"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Header" type="HBoxContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid/PidgeonRow/Box"]
+layout_mode = 2
+
+[node name="PidgeonLabel" type="Label" parent="PowerDrawer/Margin/Rows/Scroll/Grid/PidgeonRow/Box/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_name")
+text = "Pidgeon"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PidgeonStackCounter" parent="PowerDrawer/Margin/Rows/Scroll/Grid/PidgeonRow/Box/Header" instance=ExtResource("12_stack")]
+layout_mode = 2
+_max = 3
+
+[node name="Elements" type="HBoxContainer" parent="PowerDrawer/Margin/Rows/Scroll/Grid/PidgeonRow/Box"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="CompassButton" type="Button" parent="PowerDrawer/Margin/Rows/Scroll/Grid/PidgeonRow/Box/Elements"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_circle_off")
+theme_override_styles/hover = SubResource("StyleBoxFlat_circle_off")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_circle_on")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_circle_on")
+theme_override_styles/focus = SubResource("StyleBoxFlat_circle_off")
+toggle_mode = true
+text = "C"
+
+[node name="TabletButton" type="Button" parent="PowerDrawer/Margin/Rows/Scroll/Grid/PidgeonRow/Box/Elements"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_circle_off")
+theme_override_styles/hover = SubResource("StyleBoxFlat_circle_off")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_circle_on")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_circle_on")
+theme_override_styles/focus = SubResource("StyleBoxFlat_circle_off")
+toggle_mode = true
+text = "T"
+
+[node name="CogwheelButton" type="Button" parent="PowerDrawer/Margin/Rows/Scroll/Grid/PidgeonRow/Box/Elements"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_circle_off")
+theme_override_styles/hover = SubResource("StyleBoxFlat_circle_off")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_circle_on")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_circle_on")
+theme_override_styles/focus = SubResource("StyleBoxFlat_circle_off")
+toggle_mode = true
+text = "G"
 
 [node name="PerformanceTester" type="Node" parent="." unique_id=2125742772]
 script = ExtResource("7_k8lxl")
 _iterationCount = 10
 _wildCount = 10
 
-[connection signal="toggled" from="CalculatorUI/BottomContainer/AristoteHBoxContainer/AristoteCheckButton" to="CalculatorUI/BottomContainer/AristoteHBoxContainer/AristoteCheckButton" method="_on_toggled"]
+[connection signal="toggled" from="PowerDrawer/Margin/Rows/Scroll/Grid/AristoteRow/Box/AristoteCheckButton" to="PowerDrawer/Margin/Rows/Scroll/Grid/AristoteRow/Box/AristoteCheckButton" method="_on_toggled"]
