@@ -157,7 +157,7 @@ size_flags_horizontal = 3
 theme = SubResource("Theme_ehe00")
 text = "Reset"
 script = ExtResource("7_tfi6g")
-_upgradeGroupButton = NodePath("../../PowerDrawer/Margin/Rows/Scroll/Grid/AristoteRow/Box/AristoteCheckButton")
+_upgradeGroupButton = NodePath("../../../PowerDrawer/Margin/Rows/Scroll/Grid/AristoteRow/Box/AristoteCheckButton")
 
 [node name="Label" type="Label" parent="CalculatorUI/BottomContainer" unique_id=195563827]
 layout_mode = 2
